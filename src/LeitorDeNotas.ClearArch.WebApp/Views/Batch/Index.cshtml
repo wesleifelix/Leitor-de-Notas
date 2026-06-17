@@ -1,0 +1,44 @@
+@model IEnumerable<LeitorDeNotas.ClearArch.Domain.Entities.Nota>?
+
+@{
+    ViewData["Title"] = "Processamento em lote";
+}
+
+<h1>Processamento em lote</h1>
+
+<form method="post" asp-action="Processar">
+    <div>
+        <label for="titulos">Títulos de notas (uma por linha)</label><br />
+        <textarea id="titulos" name="titulos" rows="6" cols="50"></textarea>
+    </div>
+    <button type="submit">Enviar lote</button>
+</form>
+
+<div id="progress"></div>
+
+@if (Model is not null)
+{
+    <h2>Notas processadas</h2>
+    <ul>
+    @foreach (var nota in Model)
+    {
+        <li>@nota.Titulo - @nota.Conteudo</li>
+    }
+    </ul>
+}
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl('/batchHub')
+            .build();
+
+        connection.on('ReceiveProgress', message => {
+            const progress = document.getElementById('progress');
+            progress.innerText = message;
+        });
+
+        connection.start().catch(err => console.error(err.toString()));
+    </script>
+}

@@ -1,0 +1,20 @@
+@model LeitorDeNotas.ClearArch.Commons.OperationResult<string>
+
+@{
+    ViewData["Title"] = "Notification";
+}
+
+<h1>Notification</h1>
+
+@if (Model.Success)
+{
+    <div>
+        <p>@Model.Data</p>
+    </div>
+}
+else
+{
+    <div>
+        <p>@Model.Message</p>
+    </div>
+}

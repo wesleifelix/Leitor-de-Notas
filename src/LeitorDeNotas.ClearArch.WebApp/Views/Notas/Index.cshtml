@@ -1,0 +1,13 @@
+@model IEnumerable<LeitorDeNotas.ClearArch.Domain.Entities.Nota>
+
+@{
+    ViewData["Title"] = "Notas";
+}
+
+<h1>Notas</h1>
+<ul>
+@foreach (var nota in Model)
+{
+    <li>@nota.Titulo - @nota.Conteudo</li>
+}
+</ul>
