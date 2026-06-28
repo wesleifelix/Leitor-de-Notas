@@ -1,5 +1,6 @@
 using LeitorDeNotas.ClearArch.Application.Interfaces;
 using LeitorDeNotas.ClearArch.Domain.Entities;
+using LeitorDeNotas.ClearArch.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeitorDeNotas.ClearArch.Api.Controllers;

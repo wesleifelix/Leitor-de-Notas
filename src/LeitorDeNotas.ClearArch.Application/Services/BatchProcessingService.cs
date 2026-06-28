@@ -25,4 +25,9 @@ public sealed class BatchProcessingService : IBatchProcessingService
 
         return OperationResult<IEnumerable<Nota>>.Ok(adicionado, "Processamento em lote concluído com sucesso.");
     }
+
+    Task<OperationResult<IEnumerable<Nota>>> IBatchProcessingService.ProcessarNotasEmLoteAsync(IEnumerable<Nota> notas, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }

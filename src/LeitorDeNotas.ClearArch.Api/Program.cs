@@ -11,8 +11,6 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-builder.Services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
-builder.Services.AddScoped<INotaFiscalXmlParser, NotaFiscalXmlParser>();
 
 builder.Services.AddSingleton<INotaRepository, NotaRepository>();
 builder.Services.AddScoped<GetNotasQuery>();
@@ -25,7 +23,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        // Força o Swagger UI a procurar o arquivo correto de definição da API
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Leitor de Notas API v1");
+    });
 }
 
 app.MapGet("/notas", async (GetNotasQuery query) => await query.ExecuteAsync());
