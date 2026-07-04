@@ -46,6 +46,7 @@ public class NotaFiscalController : ControllerBase
             using (var stream = files.OpenReadStream())
             using (var archive = new ZipArchive(stream))
             {
+                var lsNotas = new List<NotaFiscal>();
                 foreach (var entry in archive.Entries)
                 {
                     // Ignora pastas dentro do zip, foca apenas em arquivos XML
@@ -55,14 +56,14 @@ public class NotaFiscalController : ControllerBase
                         using (var reader = new StreamReader(entryStream))
                         {
                             var xmlConteudo = await reader.ReadToEndAsync();
-
-                            // Chama a sua função de leitura para cada XML encontrado
-                            // Exemplo:
-                            // var notaFiscal = _xmlParser.Parse(xmlConteudo);
-                            // await _notaFiscalRepository.AdicionarAsync(notaFiscal);
+                            var notaFiscal = _xmlParser.Parse(xmlConteudo);
+                            if (notaFiscal != null)
+                                lsNotas.Add(notaFiscal);
                         }
                     }
                 }
+
+                return Created(string.Empty, lsNotas);
             }
         }
         else if (files.ContentType == "text/xml" ||

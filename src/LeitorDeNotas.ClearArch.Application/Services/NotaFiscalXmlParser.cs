@@ -50,7 +50,7 @@ public sealed class NotaFiscalXmlParser : INotaFiscalXmlParser
                     var quantidade = decimal.TryParse(quantidadeText, out var q) ? q : 0m;
                     var valorUnitario = decimal.TryParse(valorUnitarioText.Replace(".",","), out var v) ? v : 0m;
 
-                    return NotaFiscalItem.Criar(Guid.Empty, descricao, tipoItem, quantidade, valorUnitario, ncm, CodigoProduto);
+                    return NotaFiscalItem.Criar(Guid.Empty, descricao, CodigoProduto, quantidade, valorUnitario, ncm);
                 });
 
             itensLista = itens.ToList();
@@ -79,7 +79,7 @@ public sealed class NotaFiscalXmlParser : INotaFiscalXmlParser
                     var quantidade = decimal.TryParse(quantidadeText, out var q) ? q : 1m;
                     var valorUnitario = decimal.TryParse(vTotal.ToString(), out var v) ? v : 0m;
 
-                    return NotaFiscalItem.Criar(Guid.Empty, descricao, tipoItem, quantidade, valorUnitario, ncm, CodigoProduto);
+                    return NotaFiscalItem.Criar(Guid.Empty, descricao, CodigoProduto, quantidade, valorUnitario, ncm);
                 });
 
             itensLista = itens.ToList();

@@ -32,7 +32,7 @@ public sealed class NotaFiscalRepository : INotaFiscalRepository
                 Id = item.Id,
                 NotaFiscalId = notaFiscal.Id,
                 Descricao = item.Descricao,
-                Tipo = item.Tipo,
+                Tipo = item.SKU,
                 Quantidade = item.Quantidade,
                 ValorUnitario = item.ValorUnitario,
                 ValorTotal = item.ValorTotal
@@ -57,7 +57,7 @@ public sealed class NotaFiscalRepository : INotaFiscalRepository
             entity.Serie,
             entity.DataEmissao,
             (NotaFiscal.TipoNota)entity.Tipo,
-            entity.Itens.Select(item => NotaFiscalItem.Criar(entity.Id, item.Descricao, item.Tipo, item.Quantidade, item.ValorUnitario, item.NCM, item.SKU)))
+            entity.Itens.Select(item => NotaFiscalItem.Criar(entity.Id, item.Descricao, item.SKU, item.Quantidade, item.ValorUnitario, item.NCM)))
         );
     }
 }
