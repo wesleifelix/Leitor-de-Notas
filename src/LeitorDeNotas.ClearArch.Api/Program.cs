@@ -1,7 +1,9 @@
+using Humanizer.Configuration;
 using LeitorDeNotas.ClearArch.Application.UseCases.Notas;
+using LeitorDeNotas.ClearArch.Domain.Interfaces;
 using LeitorDeNotas.ClearArch.Infrastructure.Data;
 using LeitorDeNotas.ClearArch.Infrastructure.Repositories;
-using LeitorDeNotas.ClearArch.Domain.Interfaces;
+using LeitorDeNotas.ClearArch.IoC;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +13,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-
-builder.Services.AddSingleton<INotaRepository, NotaRepository>();
-builder.Services.AddScoped<GetNotasQuery>();
+builder.Services.AddControllers();
+builder.Services.AddLeitorDeNotasServices();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -30,6 +31,12 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapGet("/notas", async (GetNotasQuery query) => await query.ExecuteAsync());
+//app.MapGet("/notas", async (GetNotasQuery query) => await query.ExecuteAsync());
+app.UseHttpsRedirection();
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

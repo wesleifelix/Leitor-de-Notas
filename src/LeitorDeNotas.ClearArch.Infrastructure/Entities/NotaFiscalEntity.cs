@@ -8,7 +8,7 @@ public sealed class NotaFiscalEntity
     public string ChaveAcesso { get; set; } = string.Empty;
     public string Serie { get; set; } = string.Empty;
     public DateTime DataEmissao { get; set; }
-    public string Tipo { get; set; } = string.Empty;
+    public int Tipo { get; set; } = 0;
     public decimal ValorTotal { get; set; }
     public decimal EstimativaImposto { get; set; }
     public decimal EstimativaLucroPrejuizo { get; set; }

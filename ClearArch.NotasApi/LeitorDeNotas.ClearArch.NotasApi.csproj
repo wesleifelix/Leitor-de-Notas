@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.5-beta1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\LeitorDeNotas.ClearArch.Commons\LeitorDeNotas.ClearArch.Commons.csproj" />
+    <ProjectReference Include="..\src\LeitorDeNotas.ClearArch.Domain\LeitorDeNotas.ClearArch.Domain.csproj" />
+    <ProjectReference Include="..\src\LeitorDeNotas.ClearArch.Infrastructure\LeitorDeNotas.ClearArch.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\LeitorDeNotas.ClearArch.IoC\LeitorDeNotas.ClearArch.IoC.csproj" />
+  </ItemGroup>
+
+</Project>

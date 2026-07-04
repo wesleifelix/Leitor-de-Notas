@@ -2,7 +2,7 @@ using LeitorDeNotas.ClearArch.Domain.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace LeitorDeNotas.ClearArch.Api.Models;
+namespace LeitorDeNotas.ClearArch.Application.UseCases.Notas;
 
 public class NotaFiscalNacional
 {

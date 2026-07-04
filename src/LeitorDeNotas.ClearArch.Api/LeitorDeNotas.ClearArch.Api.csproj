@@ -9,10 +9,15 @@
     <ProjectReference Include="../LeitorDeNotas.ClearArch.Commons/LeitorDeNotas.ClearArch.Commons.csproj" />
     <ProjectReference Include="..\LeitorDeNotas.ClearArch.Application\LeitorDeNotas.ClearArch.Application.csproj" />
     <ProjectReference Include="..\LeitorDeNotas.ClearArch.Infrastructure\LeitorDeNotas.ClearArch.Infrastructure.csproj" />
+    <ProjectReference Include="..\LeitorDeNotas.ClearArch.IoC\LeitorDeNotas.ClearArch.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Openapi" Version="1.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
