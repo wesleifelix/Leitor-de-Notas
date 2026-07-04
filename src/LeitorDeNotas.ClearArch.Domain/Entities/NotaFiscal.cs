@@ -51,6 +51,7 @@ public sealed class NotaFiscal
         ArgumentNullException.ThrowIfNull(serie);
         ArgumentNullException.ThrowIfNull(tipo);
 
+
         var itensLista = itens?.ToList() ?? throw new ArgumentNullException(nameof(itens));
         if (!itensLista.Any())
             throw new ArgumentException("A nota fiscal deve conter ao menos um item.", nameof(itens));
